@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_10_121814) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_11_075410) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -40,7 +40,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_10_121814) do
     t.bigint "budget_category_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "phase_id", null: false
     t.index ["budget_category_id"], name: "index_budget_projects_on_budget_category_id"
+    t.index ["phase_id"], name: "index_budget_projects_on_phase_id"
   end
 
   create_table "impact_metrics", force: :cascade do |t|
@@ -71,6 +73,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_10_121814) do
   end
 
   add_foreign_key "budget_projects", "budget_categories"
+  add_foreign_key "budget_projects", "phases"
   add_foreign_key "impact_metrics", "budget_projects"
   add_foreign_key "votes", "budget_projects"
 end

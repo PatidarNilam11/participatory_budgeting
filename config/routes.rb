@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get "budget_projects/index"
+  get "budget_projects/new"
+  get "budget_projects/create"
+  get "budget_projects/show"
+  get "votes/create"
   namespace :admin do
       resources :budget_categories
       resources :budget_projects
